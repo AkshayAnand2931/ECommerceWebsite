@@ -7,6 +7,7 @@ import Men from './Components/Men';
 import Women from './Components/Women';
 import Shoes from './Components/Shoes';
 import Profile from './Components/Profile';
+import Footer from './Components/Footer';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path='/profile' element={<Profile/>}></Route>
         </Routes>
       </div>
+      <Footer></Footer>
     </div>
   );
 }
