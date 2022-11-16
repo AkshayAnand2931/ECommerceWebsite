@@ -6,7 +6,7 @@ const ProductList = (props) => {
     return (
           <div className='products'>
             {
-                props.data.products.map(product => <div>
+                props.data.products.map(product => <div key={props.data.products.indexOf(product)}>
                 <MediaCard {...product}></MediaCard>
               </div>)
             }

@@ -1,0 +1,35 @@
+const data = {
+    products:[
+        {
+            name:"Shirt",
+            brand:"Nike",
+            price:450,
+            image:"https://image.uniqlo.com/UQ/ST3/ph/imagesgoods/446935/item/phgoods_41_446935.jpg?width=1008&impolicy=quality_75"
+        },
+        {
+            name:"T-Shirt",
+            brand:"Adidas",
+            price:450,
+            image:"https://image.uniqlo.com/UQ/ST3/ph/imagesgoods/446935/item/phgoods_41_446935.jpg?width=1008&impolicy=quality_75"
+        },
+        {
+            name:"Jersey",
+            brand:"Nike",
+            price:450,
+            image:"https://image.uniqlo.com/UQ/ST3/ph/imagesgoods/446935/item/phgoods_41_446935.jpg?width=1008&impolicy=quality_75"
+        },
+        {
+            name:"Jersey",
+            brand:"Nike",
+            price:450,
+            image:"https://image.uniqlo.com/UQ/ST3/ph/imagesgoods/446935/item/phgoods_41_446935.jpg?width=1008&impolicy=quality_75"
+        },
+        {
+            name:"Jersey",
+            brand:"Nike",
+            price:450,
+            image:"https://image.uniqlo.com/UQ/ST3/ph/imagesgoods/446935/item/phgoods_41_446935.jpg?width=1008&impolicy=quality_75"
+        }
+    ]
+}
+export default data;
