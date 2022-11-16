@@ -69,6 +69,19 @@ const Navbar = () => {
                   paddingRight: "30px",
                   fontWeight: "600",
                 }}
+                href="/kids"
+              >
+                Kids
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                style={{
+                  color: "black",
+                  paddingRight: "30px",
+                  fontWeight: "600",
+                }}
                 href="/shoes"
               >
                 Shoes
