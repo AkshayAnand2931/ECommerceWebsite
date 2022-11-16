@@ -3,14 +3,14 @@ import './style.css'
 
 const Footer = () => {
   return (
-    <footer class="footer-distributed">
+    <footer className="footer-distributed">
 
-			<div class="footer-left">
+			<div className="footer-left">
 
 				<h3><span>Apparel</span></h3>
 
-				<p class="footer-links">
-					<a href="/home" class="link-1">Home</a>
+				<p className="footer-links">
+					<a href="/home" className="link-1">Home</a>
 					
 					<a href="/men">Men</a>
 				
@@ -26,24 +26,24 @@ const Footer = () => {
 				
 			</div>
 
-			<div class="footer-center">
+			<div className="footer-center">
 
 				<div>
-					<i class="fa fa-map-marker"></i>
+					<i className="fa fa-map-marker"></i>
 					<p><span>PES University</span> Ring Road, Benagluru</p>
 				</div>
 
 				<div>
-					<i class="fa fa-phone"></i>
+					<i className="fa fa-phone"></i>
 					<p>+91 9876445632</p>
 				</div>
 
 
 			</div>
 
-			<div class="footer-right">
+			<div className="footer-right">
 
-				<p class="footer-company-about">
+				<p className="footer-company-about">
 					<span>About the company</span>
 					Apparel is a clothing e-commerce website. We sell men and women clothing from top brands. We also sell shoes
 				</p>
