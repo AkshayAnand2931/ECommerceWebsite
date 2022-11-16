@@ -1,5 +1,7 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState,useReducer } from 'react'
+import reducer from './reducer'
+import logger from 'use-reducer-logger'
 import axios from 'axios'
 import Banner from './Banner'
 import './style.css'
@@ -7,13 +9,27 @@ import ProductList from './ProductList'
 
 const Home = () => {
 
-  const [products,setProducts] = useState([]);
+  const [{loading,error,products},dispatch] = useReducer(logger(reducer),
+    {
+      products:[],
+      loading:true,
+      error:''
+    })
+    
   useEffect(()=>
   {
     const fetchData = async () =>
     {
-      const result = await axios.get('/api/products');
-      setProducts(result.data);
+      dispatch({type:'FETCH_REQUEST'});
+      try
+      {
+        const result = await axios.get('/api/products');
+        dispatch({type:'FETCH_SUCCESS',payload: result.data})
+      }
+      catch(err)
+      {
+        dispatch({type:'FETCH_FAIL',payload: err.message})
+      }
     }
     fetchData();
   },[]);
