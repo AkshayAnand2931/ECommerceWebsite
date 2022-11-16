@@ -12,11 +12,13 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 export default function MediaCard(props) {
   return (
     <Card sx={{ width: 240,margin:10}}>
-      <CardMedia
-        component="img"
-        height="240"
-        image = {props.image}
-      />
+      <a href={`product/${props.slug}`}>
+        <CardMedia
+          component="img"
+          height="240"
+          image = {props.image}
+        />
+      </a>
       <h4 style={{textAlign:"left",paddingLeft:"0.2em"}}>{props.name}</h4>
       <p style={{textAlign:"left",paddingLeft:"0.5em"}}>{props.brand}</p>
       <p style={{textAlign:"left",paddingLeft:"0.5em"}}><b>Rs. {props.price}</b></p>

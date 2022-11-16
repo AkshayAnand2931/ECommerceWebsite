@@ -3,30 +3,35 @@ const data = {
         {
             name:"Shirt",
             brand:"Nike",
+            slug:'nike-shirt',
             price:450,
             image:"https://image.uniqlo.com/UQ/ST3/ph/imagesgoods/446935/item/phgoods_41_446935.jpg?width=1008&impolicy=quality_75"
         },
         {
             name:"T-Shirt",
             brand:"Adidas",
+            slug:'adidas-t-shirt',
             price:450,
             image:"https://image.uniqlo.com/UQ/ST3/ph/imagesgoods/446935/item/phgoods_41_446935.jpg?width=1008&impolicy=quality_75"
         },
         {
             name:"Jersey",
             brand:"Nike",
+            slug:'nike-jersey',
             price:450,
             image:"https://image.uniqlo.com/UQ/ST3/ph/imagesgoods/446935/item/phgoods_41_446935.jpg?width=1008&impolicy=quality_75"
         },
         {
-            name:"Jersey",
+            name:"Shoes",
             brand:"Nike",
+            slug:'nike-shoes',
             price:450,
             image:"https://image.uniqlo.com/UQ/ST3/ph/imagesgoods/446935/item/phgoods_41_446935.jpg?width=1008&impolicy=quality_75"
         },
         {
-            name:"Jersey",
-            brand:"Nike",
+            name:"Jeans",
+            brand:"Levi",
+            slug:'levi-jeans',
             price:450,
             image:"https://image.uniqlo.com/UQ/ST3/ph/imagesgoods/446935/item/phgoods_41_446935.jpg?width=1008&impolicy=quality_75"
         }
