@@ -35,7 +35,58 @@ const ProductScreen = (props) => {
             <h2>Rs {products.price}</h2>
             <p>Description to be added</p>
             <form>
-                
+                <div className="size-select">
+                    <p>Size</p>
+                    <label for="small">
+                        <input type="radio" name="size" id="small"/>
+                        <span>S</span>
+                    </label>
+                    <label for="medium">
+                        <input type="radio" name="size" id="medium"/>
+                        <span>M</span>
+                    </label>
+                    <label for="large">
+                        <input type="radio" name="size" id="large"/>
+                        <span>L</span>
+                    </label>
+                    <label for="x-large">
+                        <input type="radio" name="size" id="x-large"/>
+                        <span>XL</span>
+                    </label>
+                    <label for="xx-large">
+                        <input type="radio" name="size" id="xx-large"/>
+                        <span>XXL</span>
+                    </label>
+                </div>
+
+                <div className="color-select">
+                    <p>Color</p>
+                    <label for="red">
+                        <input type="radio" name="color" id="red"/>
+                        <span className="color1"></span>
+                    </label>
+                    <label for="green">
+                        <input type="radio" name="color" id="green"/>
+                        <span className="color2"></span>
+                    </label>
+                    <label for="blue">
+                        <input type="radio" name="color" id="blue"/>
+                        <span className="color3"></span>
+                    </label>
+                    <label for="pink">
+                        <input type="radio" name="color" id="pink"/>
+                        <span className="color4"></span>
+                    </label>
+                </div>
+
+                <div className="quantity-select">
+                    <p>Quantity</p>
+                    <input type='number' placeholder="1"/>
+                </div>
+
+                <button className="Submit">
+                    Add to Cart
+                </button>
             </form>
         </div>
       </div>
