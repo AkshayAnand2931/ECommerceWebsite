@@ -8,7 +8,7 @@ import Shoes from './Components/Shoes';
 import Profile from './Components/Profile';
 import Footer from './Components/Footer';
 import Kids from './Components/Kids'
-
+import Redirect from './Components/Redirect';
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
           <Route path='/kids' element={<Kids/>}></Route>
           <Route path='/shoes' element={<Shoes/>}></Route>
           <Route path='/profile' element={<Profile/>}></Route>
+          <Route path='/product/:id' element={<Redirect/>}></Route>
         </Routes>
       </div>
       <Footer></Footer>
