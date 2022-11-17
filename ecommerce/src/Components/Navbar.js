@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "./logo.png";
 import profile from "./profile.png";
 import bag from "./bag.png";
 import "./Navbar.css";
+import { Store } from "../Store";
 
 const Navbar = () => {
   function changeBackground(e) {
@@ -12,6 +13,8 @@ const Navbar = () => {
     e.target.style.background = "rgba(241, 229, 229, 1)";
   }
 
+  const {state} = useContext(Store);
+  const {cart} = state;
   return (
     <div>
       <nav
@@ -115,6 +118,9 @@ const Navbar = () => {
               </a>
               <a className="navbar-brand" href="/bag">
                 <img src={bag} width={30} height={25} alt="bag" />
+                {
+                  cart.cartItems.length
+                }
               </a>
             </div>
           </ul>
