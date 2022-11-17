@@ -33,7 +33,7 @@ const ProductScreen = (props) => {
         <div className="details">
             <h1>{products.name}</h1>
             <h2>Rs {products.price}</h2>
-            <p>Description to be added</p>
+            <p>{products.description}</p>
             <form>
                 <div className="size-select">
                     <p>Size</p>
