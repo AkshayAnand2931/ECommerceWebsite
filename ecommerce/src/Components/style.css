@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
 
+
 .products{
     display: flex;
     flex-direction: row;
@@ -207,5 +208,43 @@
 	.footer-distributed .footer-center i{
 		margin-left: 0;
 	}
+
+}
+
+.container
+{
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.product
+{
+	width: 90%;
+	max-width: 750px;
+	display: flex;
+}
+
+.image
+{
+	flex-basis: 47%;
+	background: #241e20;
+}
+
+.image img
+{
+	width:100%;
+	display: block;
+	padding-top: 100px;
+}
+
+.details
+{
+	flex-basis: 53%;
+	background: #fff;
+	padding: 40px;
+	padding-left: 60px;
 
 }
