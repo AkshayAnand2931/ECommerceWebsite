@@ -1,30 +1,36 @@
 import express from 'express'
-import data from './data.js'
+//import data from './data.js'
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import mongodb from 'mongodb';
 
 const MongoClient = mongodb.MongoClient;
+var data =[]
 
 dotenv.config();
-/*
-var obj = data.products;
 
-MongoClient.connect(process.env.MONGODB_URI,function(err,db){
-    if(err) throw err;
-    var dbo = db.db("Apparel");
-    dbo.collection("Products").insertMany(obj,function(err,res){
+//var obj = data.products;
+const app = express();
+
+app.use(function(req,res,next)
+{
+    MongoClient.connect(process.env.MONGODB_URI,function(err,db){
         if(err) throw err;
-        db.close();
+        var dbo = db.db("Apparel");
+        dbo.collection("Products").find().toArray(function(err,docs){
+            if(err) throw err;
+            console.log(docs)
+            data = concat(data,docs)
+            console.log(data)
+            next()
+        })
     })
 })
-*/
 
-const app = express();
 
 app.get("/api/products/home",function(req,res)
 {
-    res.send(data.products);
+    res.send(data);
 });
 
 app.get("/api/products/men",function(req,res)
