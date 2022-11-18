@@ -20,7 +20,7 @@ const Navbar = () => {
   function changeBack(e) {
     e.target.style.background = "rgba(241, 229, 229, 1)";
   }
-
+  
   const {state} = useContext(Store);
   const {cart} = state;
 
