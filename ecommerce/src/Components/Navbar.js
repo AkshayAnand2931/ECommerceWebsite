@@ -4,8 +4,16 @@ import profile from "./profile.png";
 import bag from "./bag.png";
 import "./Navbar.css";
 import { Store } from "../Store";
+import {useNavigate} from 'react-router-dom'
+import { useRef } from "react";
+
+
 
 const Navbar = () => {
+
+  const navigate = useNavigate();
+
+
   function changeBackground(e) {
     e.target.style.background = "rgba(232, 28, 101, 0.83)";
   }
@@ -15,6 +23,9 @@ const Navbar = () => {
 
   const {state} = useContext(Store);
   const {cart} = state;
+
+  const ref = useRef();
+
   return (
     <div>
       <nav
@@ -46,7 +57,7 @@ const Navbar = () => {
                   paddingRight: "30px",
                   fontWeight: "600",
                 }}
-                href="/men"
+                onClick={()=>navigate('/men')}
               >
                 Men
               </a>
@@ -59,7 +70,7 @@ const Navbar = () => {
                   paddingRight: "30px",
                   fontWeight: "600",
                 }}
-                href="/women"
+                onClick={()=>navigate('/women')}
               >
                 Women
               </a>
@@ -72,7 +83,7 @@ const Navbar = () => {
                   paddingRight: "30px",
                   fontWeight: "600",
                 }}
-                href="/kids"
+                onClick={()=>navigate('/kids')}
               >
                 Kids
               </a>
@@ -85,7 +96,7 @@ const Navbar = () => {
                   paddingRight: "30px",
                   fontWeight: "600",
                 }}
-                href="/shoes"
+                onClick={()=>navigate('/shoes')}
               >
                 Shoes
               </a>
@@ -95,6 +106,7 @@ const Navbar = () => {
               style={{ paddingLeft: "250px"}}
             >
               <input
+                ref = {ref}
                 style={{ marginRight: "5px",borderRadius:"5px"}}
                 type="text"
                 className="form-control"
@@ -109,14 +121,15 @@ const Navbar = () => {
                   onMouseLeave={changeBack}
                   style={{ background: "rgba(241, 229, 229, 1)"}}
                   type="button"
+                  onClick={()=>navigate(`/search/${ref.current.value}`)}
                 >
                   Search
                 </button>
               </div>
-              <a className="navbar-brand" style={{ paddingLeft: "430px"}} href="/profile">
+              <a className="navbar-brand" style={{ paddingLeft: "430px"}} onClick={()=>navigate('/profile')}>
                 <img src={profile} width={30} height={25} alt="profile" />
               </a>
-              <a className="navbar-brand" href="/bag">
+              <a className="navbar-brand" onClick={()=>navigate('/bag')}>
                 <img src={bag} width={30} height={25} alt="bag" />
                 {
                   cart.cartItems.length

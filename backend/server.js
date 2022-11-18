@@ -1,17 +1,17 @@
 import express from 'express'
-//import data from './data.js'
+import data from './data.js'
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import mongodb from 'mongodb';
 
 const MongoClient = mongodb.MongoClient;
-var data =[]
+//var data =[]
 
 dotenv.config();
 
-//var obj = data.products;
+var obj = data.products;
 const app = express();
-
+/*
 app.use(function(req,res,next)
 {
     MongoClient.connect(process.env.MONGODB_URI,function(err,db){
@@ -26,11 +26,11 @@ app.use(function(req,res,next)
         })
     })
 })
-
+*/
 
 app.get("/api/products/home",function(req,res)
 {
-    res.send(data);
+    res.send(data.products);
 });
 
 app.get("/api/products/men",function(req,res)
@@ -88,6 +88,24 @@ app.get("/api/products/shoes",function(req,res)
 app.get("/api/products/slug/:slug",function(req,res)
 {
     const product = data.products.find(x => x.slug === req.params.slug);
+    if(product)
+    {
+        res.send(product);
+    }
+    else
+    {
+        res.send({message:"Product not found"});
+    }
+});
+
+app.get("/api/search/:query",function(req,res)
+{
+    const gender = data.products.filter(x => x.gender === req.params.query );
+    const name = data.products.filter(x => x.name === req.params.query );
+    const brand = data.products.filter(x => x.brand === req.params.query );
+
+    const product = brand.concat(gender,name);
+
     if(product)
     {
         res.send(product);

@@ -7,12 +7,17 @@ import Button from '@mui/material/Button';
 
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { useNavigate } from 'react-router';
 
 
 export default function MediaCard(props) {
+
+  const navigate = useNavigate();
+
   return (
+
     <Card sx={{ width: 240,margin:10}}>
-      <a href={`product/${props.slug}`}>
+      <a onClick={()=>navigate(`/product/${props.slug}`)}>
         <CardMedia
           component="img"
           height="240"

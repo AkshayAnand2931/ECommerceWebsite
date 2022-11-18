@@ -11,7 +11,7 @@ import { useNavigate } from "react-router";
 const ProductScreen = (props) => {
 
   const navigate = useNavigate();
-  const [input,setInput] = useState({});
+  const [input,setInput] = useState({size:'small',color:'black',quantity:1});
 
   const [{ loading, error, products }, dispatch] = useReducer(logger(reducer), {
     products: [],
@@ -67,7 +67,7 @@ const ProductScreen = (props) => {
             <div className="size-select">
               <p>Size</p>
               <label for="small">
-                <input type="radio" name="size" id="small" onClick={sizeChange} />
+                <input type="radio" name="size" id="small" onClick={sizeChange} defaultChecked={true} />
                 <span>S</span>
               </label>
               <label for="medium">
@@ -75,7 +75,7 @@ const ProductScreen = (props) => {
                 <span>M</span>
               </label>
               <label for="large">
-                <input type="radio" name="size" id="large" onClick={colorChange}/>
+                <input type="radio" name="size" id="large" onClick={sizeChange}/>
                 <span>L</span>
               </label>
               <label for="x-large">
@@ -91,7 +91,7 @@ const ProductScreen = (props) => {
             <div className="color-select">
               <p>Color</p>
               <label for="black">
-                <input type="radio" name="color" id="black" onClick={colorChange}/>
+                <input type="radio" name="color" id="black" onClick={colorChange} defaultChecked={true}/>
                 <span className="color1"></span>
               </label>
               <label for="blue">
@@ -110,7 +110,7 @@ const ProductScreen = (props) => {
 
             <div className="quantity-select">
               <p>Quantity</p>
-              <input type="number" placeholder="1" onChange={qtyChange} />
+              <input type="number" placeholder="0" onChange={qtyChange} />
             </div>
           </form>
           <button className="Submit" onClick={addToCartHandler}>

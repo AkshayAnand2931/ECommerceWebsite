@@ -1,7 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router'
 import './style.css'
 
 const Footer = () => {
+
+	const navigate = useNavigate();
+
   return (
     <footer className="footer-distributed">
 
@@ -10,17 +14,19 @@ const Footer = () => {
 				<h3><span>Apparel</span></h3>
 
 				<p className="footer-links">
-					<a href="/home" className="link-1">Home</a>
+					<a onClick={()=>navigate('/home')} className="link-1">Home</a>
 					
-					<a href="/men">Men</a>
+					<a onClick={()=>navigate('/men')}>Men</a>
 				
-					<a href="/women">Women</a>
-				
-					<a href="/shoes">Shoes</a>
+					<a onClick={()=>navigate('/women')}>Women</a>
+
+					<a onClick={()=>navigate('/kids')}>Kids</a>
+
+					<a onClick={()=>navigate('/shoes')}>Shoes</a>
 					
-					<a href="/profile">Profile</a>
+					<a onClick={()=>navigate('/profile')}>Profile</a>
 					
-					<a href="/">Cart</a>
+					<a onClick={()=>navigate('/bag')}>Cart</a>
 				</p>
 
 				
