@@ -4,27 +4,26 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import mongodb from 'mongodb';
 
+const app = express();
 const MongoClient = mongodb.MongoClient;
-var data =[]
 
 dotenv.config();
 
 //var obj = data.products;
-const app = express();
 
-app.use(function(req,res,next)
-{
+var data = [];
+
+app.use(function(req,res,next){
     MongoClient.connect(process.env.MONGODB_URI,function(err,db){
         if(err) throw err;
         var dbo = db.db("Apparel");
         dbo.collection("Products").find().toArray(function(err,docs){
-            if(err) throw err;
-            console.log(docs)
-            data = concat(data,docs)
-            console.log(data)
+            if(err) throw err
+            data = data.concat(docs);
             next()
         })
-    })
+        })
+        
 })
 
 
@@ -35,7 +34,7 @@ app.get("/api/products/home",function(req,res)
 
 app.get("/api/products/men",function(req,res)
 {
-    const product = data.products.filter(x => x.gender === 'Men');
+    const product = data.filter(x => x.gender === 'Men');
     if(product)
     {
         res.send(product);
@@ -48,7 +47,7 @@ app.get("/api/products/men",function(req,res)
 
 app.get("/api/products/women",function(req,res)
 {
-    const product = data.products.filter(x => x.gender === 'Women');
+    const product = data.filter(x => x.gender === 'Women');
     if(product)
     {
         res.send(product);
@@ -61,7 +60,7 @@ app.get("/api/products/women",function(req,res)
 
 app.get("/api/products/kids",function(req,res)
 {
-    const product = data.products.filter(x => x.gender === 'Kids');
+    const product = data.filter(x => x.gender === 'Kids');
     if(product)
     {
         res.send(product);
@@ -74,7 +73,7 @@ app.get("/api/products/kids",function(req,res)
 
 app.get("/api/products/shoes",function(req,res)
 {
-    const product = data.products.filter(x => x.type === 'shoes');
+    const product = data.filter(x => x.type === 'shoes');
     if(product)
     {
         res.send(product);
@@ -87,7 +86,7 @@ app.get("/api/products/shoes",function(req,res)
 
 app.get("/api/products/slug/:slug",function(req,res)
 {
-    const product = data.products.find(x => x.slug === req.params.slug);
+    const product = data.find(x => x.slug === req.params.slug);
     if(product)
     {
         res.send(product);
