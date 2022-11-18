@@ -1,5 +1,24 @@
 import express from 'express'
 import data from './data.js'
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import mongodb from 'mongodb';
+
+const MongoClient = mongodb.MongoClient;
+
+dotenv.config();
+/*
+var obj = data.products;
+
+MongoClient.connect(process.env.MONGODB_URI,function(err,db){
+    if(err) throw err;
+    var dbo = db.db("Apparel");
+    dbo.collection("Products").insertMany(obj,function(err,res){
+        if(err) throw err;
+        db.close();
+    })
+})
+*/
 
 const app = express();
 
