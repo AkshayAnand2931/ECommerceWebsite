@@ -1,6 +1,4 @@
 import express from 'express'
-import data from './data.js'
-import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import mongodb from 'mongodb';
 
@@ -14,22 +12,25 @@ dotenv.config();
 var data = [];
 
 app.use(function(req,res,next){
-    MongoClient.connect(process.env.MONGODB_URI,function(err,db){
-        if(err) throw err;
-        var dbo = db.db("Apparel");
-        dbo.collection("Products").find().toArray(function(err,docs){
-            if(err) throw err
-            data = data.concat(docs);
-            next()
+    if(data.length === 0)
+    {
+        MongoClient.connect(process.env.MONGODB_URI,function(err,db){
+            if(err) throw err;
+            var dbo = db.db("Apparel");
+            dbo.collection("Products").find().toArray(function(err,docs){
+                if(err) throw err
+                data = data.concat(docs);
+            })
         })
-        })
+    }
+    next();
         
 })
-*/
+
 
 app.get("/api/products/home",function(req,res)
 {
-    res.send(data.products);
+    res.send(data);
 });
 
 app.get("/api/products/men",function(req,res)
@@ -99,9 +100,9 @@ app.get("/api/products/slug/:slug",function(req,res)
 
 app.get("/api/search/:query",function(req,res)
 {
-    const gender = data.products.filter(x => x.gender === req.params.query );
-    const name = data.products.filter(x => x.name === req.params.query );
-    const brand = data.products.filter(x => x.brand === req.params.query );
+    const gender = data.filter(x => x.gender === req.params.query );
+    const name = data.filter(x => x.name === req.params.query );
+    const brand = data.filter(x => x.brand === req.params.query );
 
     const product = brand.concat(gender,name);
 
