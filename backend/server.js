@@ -23,6 +23,7 @@ app.use(function(req,res,next){
             })
         })
     }
+    console.log("data is ",data.length)
     next();
         
 })
