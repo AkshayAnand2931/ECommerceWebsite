@@ -94,6 +94,7 @@ function Bag() {
                 <div className="d-grid">
                   <Button
                     type="button"
+                    onClick={()=>navigate("/checkout")}
                     disabled={cartItems.length === 0}
                     style={{ background: "rgba(232,28,101,0.83)" }}
                   >

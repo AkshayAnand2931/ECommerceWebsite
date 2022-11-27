@@ -11,6 +11,7 @@ import Kids from './Components/Kids'
 import Redirect from './Components/Redirect';
 import Redirect2 from './Components/Redirect2';
 import Bag from './Components/Bag';
+import Checkout from './Components/Checkout'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/shoes' element={<Shoes/>}></Route>
           <Route path='/bag' element={<Bag/>}></Route>
           <Route path='/profile' element={<Profile/>}></Route>
+          <Route path='/checkout' element={<Checkout/>}></Route>
           <Route path='/product/:id' element={<Redirect/>}></Route>
           <Route path='/search/:query' element={<Redirect2/>}></Route>
         </Routes>
