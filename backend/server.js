@@ -161,6 +161,16 @@ app.post('/api/users/signin',function(req,res)
     }
 })
 
+app.post('/api/signup',function(req,res){
+    MongoClient.connect(process.env.MONGODB_URI,function(err,db){
+        if(err) throw err;
+        var dbo = db.db("Apparel");
+        req.body.password = bcrypt.hashSync(req.body.password)
+        console.log(req.body)
+        dbo.collection('Users').insertOne(req.body);
+    })
+})
+
 app.get('/api/users/:user',function(req,res)
 {
     console.log('profile')

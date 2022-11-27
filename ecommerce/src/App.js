@@ -13,6 +13,7 @@ import SigninScreen from './screens/SignInScreen';
 import Bag from './Components/Bag';
 import Checkout from './Components/Checkout'
 import Redirect3 from './Components/Redirect3';
+import SignUpScreen from './screens/SignUpScreen';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path='/bag' element={<Bag/>}></Route>
           <Route path='/profile' element={<SigninScreen/>}></Route>
           <Route path='/checkout' element={<Checkout/>}></Route>
+          <Route path='/signup' element={<SignUpScreen/>}></Route>
           <Route path='/product/:id' element={<Redirect/>}></Route>
           <Route path='/search/:query' element={<Redirect2/>}></Route>
           <Route path='/users/:user' element={<Redirect3/>}></Route>
