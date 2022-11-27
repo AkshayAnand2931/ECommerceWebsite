@@ -2,23 +2,27 @@ import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
-import { Axios } from 'axios'
+import  axios from 'axios'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 
 
 export default function SigninScreen(){
 
+    const navigate = useNavigate();
     const [email,setEmail] = useState('');
     const [password,setPassword] = useState('');
 
     const submitHandler = async (e) => {
         e.preventDefault();
+        console.log('submitted');
         try {
-           const {data} = await Axios.post('/api/users/signin',{
+           const {data} = await axios.post('/api/users/signin',{
             email,
             password,
            });
+           navigate(`/users/${data[0]._id}`)
         } catch (error) {
             
         }
@@ -35,7 +39,7 @@ export default function SigninScreen(){
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="password">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" required onChange={(e)=> setEmail(e.target.value)}></Form.Control>
+                    <Form.Control type="password" required onChange={(e)=> setPassword(e.target.value)}></Form.Control>
                 </Form.Group>
                 <div className="mb-3">
                     <Button type="submit" style={{background:"rgba(232, 28, 101, 0.83)",borderColor:"white"}}>Sign In</Button>

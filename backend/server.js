@@ -2,8 +2,6 @@ import express from 'express'
 import dotenv from 'dotenv';
 import mongodb from 'mongodb';
 import bcrypt from 'bcryptjs';
-import userRouter from './routes/userRoutes';
-
 
 
 const app = express();
@@ -11,43 +9,11 @@ const MongoClient = mongodb.MongoClient;
 
 dotenv.config();
 
-//var obj = data.products;
-/*
-MongoClient.connect(process.env.MONGODB_URI,function(err,db){
-    if(err) throw err;
-    var dbo = db.db('Apparel');
-    var obj = [
-        {
-            name:"Achintya Krishna",
-            email:"achi@gmail.com",
-            password: bcrypt.hashSync('123456')
-        },
-        {
-            name:"Akshay",
-            email:"akshay@gmail.com",
-            password: bcrypt.hashSync('108108')
-        },
-        {
-            name:"Aaryan",
-            email:"aryan@gmail.com",
-            password: bcrypt.hashSync('7089765')
-        }
-    ];
-    dbo.collection('Users').insertMany(obj,function(err,res){
-        if(err) throw err;
-        db.close();
-    })
-})
-*/
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/users', userRouter);
-
-app.use((err, req, res, next) => {
-  res.status(500).send({ message: err.message });
-});
 var data = [];
+var users = [];
 
 app.use(function(req,res,next){
     if(data.length === 0)
@@ -59,6 +25,27 @@ app.use(function(req,res,next){
                 if(err) throw err
                 data = data.concat(docs);
                 console.log("data is ",data.length)
+                next();
+            })
+        })
+    }
+    else
+    {
+        next();
+    }
+        
+})
+
+app.use(function(req,res,next){
+    if(users.length === 0)
+    {
+        MongoClient.connect(process.env.MONGODB_URI,function(err,db){
+            if(err) throw err;
+            var dbo = db.db("Apparel");
+            dbo.collection("Users").find().toArray(function(err,docs){
+                if(err) throw err
+                users = users.concat(docs);
+                console.log("users is ",users.length)
                 next();
             })
         })
@@ -159,8 +146,41 @@ app.get("/api/search/:query",function(req,res)
     }
 });
 
+app.post('/api/users/signin',function(req,res)
+{
+    const valid = users.filter(x => x.email === req.body.email);
+    const pass = valid.filter(x => bcrypt.compareSync(req.body.password,x.password))
+
+    if(pass.length === 0)
+    {
+        res.send({message:"no users"})
+    }
+    else
+    {
+        res.send(pass);
+    }
+})
+
+app.get('/api/users/:user',function(req,res)
+{
+    console.log('profile')
+    const id = req.params.user;
+    const user = users.filter(x => x._id == id);
+
+    if(user.length >= 1)
+    {
+        res.send(user[0]);
+    }
+    else
+    {
+        res.send({message:"no users"})
+    }
+})
+
+
 const port =  process.env.PORT || 5000;
 app.listen(port,function()
 {
     console.log(`serve at http://localhost:${port}`);
 });
+
