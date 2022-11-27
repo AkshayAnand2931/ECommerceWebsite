@@ -58,11 +58,15 @@ app.use(function(req,res,next){
             dbo.collection("Products").find().toArray(function(err,docs){
                 if(err) throw err
                 data = data.concat(docs);
+                console.log("data is ",data.length)
+                next();
             })
         })
     }
-    console.log("data is ",data.length)
-    next();
+    else
+    {
+        next();
+    }
         
 })
 
