@@ -2,23 +2,40 @@ import Container from 'react-bootstrap/Container'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom'
+import { Axios } from 'axios'
+import { useState } from 'react'
 
 
 
 export default function SigninScreen(){
+
+    const [email,setEmail] = useState('');
+    const [password,setPassword] = useState('');
+
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        try {
+           const {data} = await Axios.post('/api/users/signin',{
+            email,
+            password,
+           });
+        } catch (error) {
+            
+        }
+    }
     return(
         <Container className="small-container">
             <p><title>Sign in</title></p>            
             
-            <Form>
+            <Form onSubmit={submitHandler}>
                 <h1 className='mb-5'>Sign In</h1>
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" required></Form.Control>
+                    <Form.Control type="email" required onChange={(e)=> setEmail(e.target.value)}></Form.Control>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="password">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" required></Form.Control>
+                    <Form.Control type="password" required onChange={(e)=> setEmail(e.target.value)}></Form.Control>
                 </Form.Group>
                 <div className="mb-3">
                     <Button type="submit" style={{background:"rgba(232, 28, 101, 0.83)",borderColor:"white"}}>Sign In</Button>
