@@ -38,6 +38,12 @@ function reducer(state, action) {
       localStorage.setItem("cartItems", JSON.stringify(cartItems));
       return { ...state, cart: { ...state.cart, cartItems } };
     }
+    case "CART_DELETE":
+    {
+      const cartItems = [];
+      localStorage.setItem('cartItems',JSON.stringify(cartItems))
+      return {...state,cart:{cartItems}}
+    }
     default:
       return state;
   }

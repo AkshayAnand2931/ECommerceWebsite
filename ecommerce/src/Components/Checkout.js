@@ -1,10 +1,23 @@
 import {useNavigate} from 'react-router-dom'
+import {useContext} from 'react'
+import { Store } from '../Store';
 
 function Checkout()
 {
+    const { state, dispatch:ctxDispatch } = useContext(Store);
+    const {
+      cart: { cartItems },
+    } = state;
     const navigate = useNavigate();
+    
+    const removeItemHandler = () =>
+    {
+      ctxDispatch({type:'CART_DELETE'})
+    }
+
     const submitHandler = () =>
     {
+        removeItemHandler()
         alert("Payment Successful!!");
         navigate('/');
     }
