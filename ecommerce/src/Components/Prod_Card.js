@@ -27,10 +27,6 @@ export default function MediaCard(props) {
       <h4 style={{textAlign:"left",paddingLeft:"0.2em"}}>{props.name}</h4>
       <p style={{textAlign:"left",paddingLeft:"0.5em"}}>{props.brand}</p>
       <p style={{textAlign:"left",paddingLeft:"0.5em"}}><b>Rs. {props.price}</b></p>
-      <CardActions>
-        <Button size="small" color='secondary'>Add to Cart</Button>
-       <ShoppingCartIcon sx={{color:'rgba(232, 28, 101, 0.83)'}}></ShoppingCartIcon>
-      </CardActions>
     </Card>
   );
 }
