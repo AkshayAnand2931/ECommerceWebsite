@@ -10,6 +10,7 @@ import Footer from './Components/Footer';
 import Kids from './Components/Kids'
 import Redirect from './Components/Redirect';
 import Redirect2 from './Components/Redirect2';
+import SigninScreen from './screens/SignInScreen';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path='/kids' element={<Kids/>}></Route>
           <Route path='/shoes' element={<Shoes/>}></Route>
           <Route path='/profile' element={<Profile/>}></Route>
+          <Route path='/signin' element={<SigninScreen/>}></Route>
           <Route path='/product/:id' element={<Redirect/>}></Route>
           <Route path='/search/:query' element={<Redirect2/>}></Route>
         </Routes>
