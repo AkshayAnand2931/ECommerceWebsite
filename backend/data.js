@@ -1,4 +1,22 @@
-const data = {
+import bcrypt from 'bcryptjs'
+const data1 = {
+    users:[
+        {
+            name:"Achintya Krishna",
+            email:"achi@gmail.com",
+            password: bcrypt.hashSync('123456')
+        },
+        {
+            name:"Akshay",
+            email:"akshay@gmail.com",
+            password: bcrypt.hashSync('108108')
+        },
+        {
+            name:"Aaryan",
+            email:"aryan@gmail.com",
+            password: bcrypt.hashSync('7089765')
+        }
+    ],
     products:[
             {
                 name:"Shirt",
@@ -272,4 +290,5 @@ const data = {
 
         ]
 }
-export default data;
+export default data1;
+
