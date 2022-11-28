@@ -121,7 +121,8 @@ const Navbar = () => {
                   onMouseLeave={changeBack}
                   style={{ background: "rgba(241, 229, 229, 1)"}}
                   type="button"
-                  onClick={()=>navigate(`/search/${ref.current.value}`)}
+                  //onClick={()=>navigate(`/search/${ref.current.value}`)}
+                  onClick={()=>window.location.href = "/search/" + ref.current.value}
                 >
                   Search
                 </button>

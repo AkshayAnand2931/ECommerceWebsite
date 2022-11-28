@@ -130,9 +130,9 @@ app.get("/api/products/slug/:slug",function(req,res)
 
 app.get("/api/search/:query",function(req,res)
 {
-    const gender = data.filter(x => x.gender === req.params.query );
-    const name = data.filter(x => x.name === req.params.query );
-    const brand = data.filter(x => x.brand === req.params.query );
+    const gender = data.filter(x => x.gender.toLowerCase().includes(req.params.query.toLowerCase()));
+    const name = data.filter(x => x.name.toLowerCase().includes(req.params.query.toLowerCase()));
+    const brand = data.filter(x  => x.brand.toLowerCase().includes(req.params.query.toLowerCase()));
 
     const product = brand.concat(gender,name);
 
